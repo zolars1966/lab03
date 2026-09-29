@@ -137,3 +137,60 @@ public class Main3 {
 Так как `z` объявлена через `auto`, ей автоматически назначается тип результата выражения — **`int`**.
 
 При запуске `typeid(z).name()` выводит `i`, что является внутренним обозначением типа `int`.
+
+### Задание 5 **(2)**
+
+```cpp
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main() {
+    // typedef: короткое имя для длинного типа.
+    typedef unsigned long long ull;
+    ull population = 8000000000ULL;
+
+    // auto: тип удобно вывести из инициализатора.
+    std::vector<std::string> names = {"Ann", "Bob"};
+    auto first = names.begin();
+
+    // decltype: получить тип выражения без выполнения этого выражения.
+    decltype(names.begin()) second;
+
+    // static_cast: явно выполнить преобразование типа.
+    double price = 19.95;
+    int roundedDown = static_cast<int>(price);
+
+    // sizeof: узнать размер объекта или типа в байтах.
+    std::size_t bytes = sizeof(ull);
+
+    std::cout << population << '\n';
+    std::cout << *first << '\n';
+
+    second = names.end() - 1;
+    
+    std::cout << *second << '\n';
+    std::cout << roundedDown << '\n';
+    std::cout << bytes << '\n';
+
+    return 0;
+}
+```
+
+Здесь каждое средство используется по назначению:
+
+- `typedef` задает псевдоним типа;
+- `auto` выводит тип из инициализатора;
+- `decltype` получает тип существующего выражения;
+- `static_cast` явно преобразует `double` в `int`;
+- `sizeof` определяет размер типа в байтах.
+
+Вывод программы:
+
+```
+8000000000
+Ann
+Bob
+19
+8
+```
