@@ -39,3 +39,91 @@
 8. **Преобразование из `bool`**: `false` превращается в `0`, `true` — в `1`.
 9. **Вещественное в целое**: дробная часть отбрасывается.
 10. **Символьные типы** при преобразовании рассматриваются по числовому коду символа (`'a' === 97`).
+
+### Задание 3 **(2)**
+
+#### Пример 1 — `int` в `bool`
+
+**C++:**
+```cpp
+#include <iostream>
+
+int main() {
+    int n = 10;
+    bool flag = n;
+    std::cout << flag << '\n';
+    return 0;
+}
+```
+
+Программа компилируется: ненулевое `int` неявно преобразуется в `true`.
+
+**Java:**
+```java
+public class Main1 {
+    public static void main(String[] args) {
+        int n = 10;
+        boolean flag = n; // ошибка
+    }
+}
+```
+
+В Java `int` нельзя неявно преобразовать в `boolean`.
+
+#### Пример 2 — `int` в `char`
+
+**C++:**
+```cpp
+#include <iostream>
+
+int main() {
+    int n = 65;
+    char c = n;
+    std::cout << c << '\n';
+
+    return 0;
+}
+```
+
+C++ допускает неявное преобразование `int` в `char`.
+
+**Java:**
+```java
+public class Main2 {
+    public static void main(String[] args) {
+        int n = 65;
+        char c = n; // ошибка
+    }
+}
+```
+
+В Java для переменной типа `int` требуется явное преобразование: `char c = (char)n;`
+
+#### Пример 3 — `double` в `float`
+
+**C++:**
+```cpp
+#include <iostream>
+
+int main() {
+    double d = 3.14;
+    float f = d;
+    std::cout << f << '\n';
+
+    return 0;
+}
+```
+
+C++ выполняет неявное преобразование `double` в `float` (возможна потеря точности).
+
+**Java:**
+```java
+public class Main3 {
+    public static void main(String[] args) {
+        double d = 3.14;
+        float f = d; // ошибка
+    }
+}
+```
+
+В Java такое сужающее преобразование нужно записать явно: `float f = (float)d;`
